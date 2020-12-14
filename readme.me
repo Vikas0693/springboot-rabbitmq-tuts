@@ -1,0 +1,14 @@
+Setting RabbitMq in windows using docker quickstart
+1)In quickstart run 'docker  run -d -it --rm  --name rabbitmq -p 5672:5672 rabbitmq:3-alpine'
+2)Now quickstart window act as host for our rabbitMq 
+3)we can interact with host but not rabbitmq directly
+4)So to talk to rabbitmq we have to bind host's port and rabbitmq port so we used -p 5672:5672 where 1rst 5672 is host's port and second one is that dockers port
+5)Then get host ip using ipconfig and use that in app.properties for rabbitmq.host
+6)if we set -p 2945:5672 then we have to set rabbitmq.port=2945
+
+Basic Hello World exsample to send messages to subscriber
+1)Run maven using 'spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=hello-world,sender' and 
+'spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=hello-world,receiver'
+2)hello-world ,sender,receiver are profiles
+3)using sender in argument, we load only those beans which are to be loaded in 'sender' profile similarly for 'receiver'
+4)we used @EnableScheduling to send messages at fixedDelay of 5sec which simulate event in real system
