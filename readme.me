@@ -21,3 +21,7 @@ Tutorial 2 in which we assigned two workers to read queue(This is useful when we
 2)in tut2Receiver.receive() we have put 'if(instance==1 && in.matches("Hello.[0-9]+"))' and throwing exception if condition is true
 3)So on throwing any exception the same message will be requeued & read by another worker but if we throw AmqpRejectAndDontRequeueException then message will not get requeued  
 
+
+TODO task
+1)Implement exact process as explained in below url
+http://websystique.com/springmvc/spring-4-mvc-jms-activemq-annotation-based-example/
