@@ -9,6 +9,10 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class Tut1Config {
 
+	Tut1Config(){
+		System.out.println("Tut1 config initialized.");
+	}
+	
 	@Bean
 	public Queue hello() {
 		return new Queue("hello");

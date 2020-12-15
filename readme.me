@@ -5,6 +5,8 @@ Setting RabbitMq in windows using docker quickstart
 4)So to talk to rabbitmq we have to bind host's port and rabbitmq port so we used -p 5672:5672 where 1rst 5672 is host's port and second one is that dockers port
 5)Then get host ip using ipconfig and use that in app.properties for rabbitmq.host
 6)if we set -p 2945:5672 then we have to set rabbitmq.port=2945
+7)If we want to have gui of rabbitmq then run 'docker  run -d -it --rm  --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management - here 15672 are ports to access monitoring and management tools'
+8)And access using hostIp:15672 where hostip is usually 192.168.99.100
 
 Basic Hello World exsample to send messages to subscriber
 1)Run maven using 'spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=hello-world,sender' and 
@@ -12,3 +14,10 @@ Basic Hello World exsample to send messages to subscriber
 2)hello-world ,sender,receiver are profiles
 3)using sender in argument, we load only those beans which are to be loaded in 'sender' profile similarly for 'receiver'
 4)we used @EnableScheduling to send messages at fixedDelay of 5sec which simulate event in real system
+
+Tutorial 2 in which we assigned two workers to read queue(This is useful when we get multiple request from client and processing of request takes time so we can distribute messages among workers)
+1)Run maven using 'spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=work-queues,sender' and 
+'spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=work-queues,receiver'
+2)in tut2Receiver.receive() we have put 'if(instance==1 && in.matches("Hello.[0-9]+"))' and throwing exception if condition is true
+3)So on throwing any exception the same message will be requeued & read by another worker but if we throw AmqpRejectAndDontRequeueException then message will not get requeued  
+
