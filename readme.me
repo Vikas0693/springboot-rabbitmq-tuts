@@ -5,7 +5,7 @@ Setting RabbitMq in windows using docker quickstart
 4)So to talk to rabbitmq we have to bind host's port and rabbitmq port so we used -p 5672:5672 where 1rst 5672 is host's port and second one is that dockers port
 5)Then get host ip using ipconfig and use that in app.properties for rabbitmq.host
 6)if we set -p 2945:5672 then we have to set rabbitmq.port=2945
-7)If we want to have gui of rabbitmq then run 'docker  run -d -it --rm  --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management - here 15672 are ports to access monitoring and management tools'
+7)If we want to have gui of rabbitmq then run 'docker  run docker -d -it --rm  --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management - here 15672 are ports to access monitoring and management tools'
 8)And access using hostIp:15672 where hostip is usually 192.168.99.100
 
 Basic Hello World exsample to send messages to subscriber

@@ -18,7 +18,7 @@ public class RabbitMqHelloWorldSpringApplication {
 	public CommandLineRunner usage() {
 		return args -> {
 			System.out.println("This app uses Spring Profiles to"+
-					"control its behavior.\n");
+					"control its behavior.So pass arguments like below.\n");
 			System.out.println("Sample usage: java -jar rabbit-tutorials.jar"
 					+ " --spring.profiles.active=hello-world,sender");
 		};
